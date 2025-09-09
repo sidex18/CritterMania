@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Placable Objects/Habitats/Scenes/CatHabitat.gd" id="2_7av3b"]
 [ext_resource type="Script" path="res://Resources/Regular/CritterData.gd" id="3_6li02"]
 [ext_resource type="Script" path="res://Resources/Regular/HabitatData.gd" id="3_mp74b"]
-[ext_resource type="Texture2D" uid="uid://be8411txvg38b" path="res://Furnitures.png" id="3_phojh"]
+[ext_resource type="Texture2D" uid="uid://be8411txvg38b" path="res://Assets/Furnitures.png" id="3_phojh"]
 
 [sub_resource type="Resource" id="Resource_h3quy"]
 script = ExtResource("3_mp74b")

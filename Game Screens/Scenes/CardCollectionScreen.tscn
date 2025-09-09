@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game Screens/Scripts/CardCollectionScreen.gd" id="1_d24nm"]
 [ext_resource type="PackedScene" uid="uid://d0jdoscgbew02" path="res://Placable Objects/Critters/Cards/Scenes/CatCard.tscn" id="2_7d42r"]
-[ext_resource type="Texture2D" uid="uid://cp607ed85edi2" path="res://TrialBorder3.png" id="2_j2c0j"]
+[ext_resource type="Texture2D" uid="uid://cp607ed85edi2" path="res://Assets/TrialBorder3.png" id="2_j2c0j"]
 
 [node name="CardCollectionScreen" type="Control"]
 custom_minimum_size = Vector2(1280, 720)
