@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://co1ymn301r2cb"]
+
+[ext_resource type="Script" path="res://Base Objects (Parent Classes)/Scripts/BasePlant.gd" id="1_kq88u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3ah76"]
+load_path = "res://.godot/imported/Orange flower with ground.png-acb8c57ffaaf5a3ac8f2de6a8016d847.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tfmg8"]
+load_path = "res://.godot/imported/dry flower with ground.png-752fbc0f6408df5bbf5f10ad67302012.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jjgd2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_3ah76")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_tfmg8")
+}],
+"loop": true,
+"name": &"dry",
+"speed": 5.0
+}]
+
+[node name="BasePlant" type="Area2D" groups=["Plants", "Savable Objects"]]
+script = ExtResource("1_kq88u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jjgd2")
+animation = &"dry"
+
+[node name="PlantArea" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-9, -84, 42, -56, 74, -21, 83, -2, -10, 53, -121, -2, -115, -34)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

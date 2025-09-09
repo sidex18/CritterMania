@@ -1,0 +1,166 @@
+[gd_scene load_steps=19 format=4 uid="uid://qo1jdxatgdro"]
+
+[ext_resource type="Script" path="res://Game Screens/Scripts/World Screen/MainGameScreen.gd" id="1_jn4ry"]
+[ext_resource type="Texture2D" uid="uid://dacxl8m5ttgia" path="res://Placable Objects/Plants/Scenes/NightSky Sky.png" id="2_fb6ry"]
+[ext_resource type="Script" path="res://Game Screens/Scripts/World Screen/LoadSaveComponent.gd" id="2_hil8r"]
+[ext_resource type="Texture2D" uid="uid://cq5ba7oo8gcop" path="res://Placable Objects/Plants/Scenes/NightSky Shadows.png" id="3_77e03"]
+[ext_resource type="PackedScene" uid="uid://psl5qgwkc2c8" path="res://GrassPatches.tscn" id="3_ps25t"]
+[ext_resource type="Script" path="res://Game Screens/Scenes/EnvironmentalObjects.gd" id="3_y8sjt"]
+[ext_resource type="Texture2D" uid="uid://cla0out7u623" path="res://Placable Objects/Plants/Scenes/NightSky Stars.png" id="4_dhlxm"]
+[ext_resource type="Script" path="res://Game Screens/Scripts/World Screen/HabButton.gd" id="4_pyu41"]
+[ext_resource type="PackedScene" uid="uid://cyeuksxqsum3n" path="res://PopUpMenu.tscn" id="4_rx0lc"]
+[ext_resource type="Script" path="res://Game Screens/Scripts/World Screen/WaterArea.gd" id="5_u0eul"]
+[ext_resource type="PackedScene" uid="uid://do02p5rt26qu" path="res://Game Screens/Utility Tools/Scenes/PlacementTool.tscn" id="7_e5r81"]
+[ext_resource type="Script" path="res://Game Screens/Scripts/World Screen/Camera.gd" id="8_6faq4"]
+[ext_resource type="Texture2D" uid="uid://bsxa18f7ra6sj" path="res://Assets/Art/World Backgrounds/Creepwood Hollows.png" id="9_fj0j1"]
+[ext_resource type="PackedScene" uid="uid://dwf14ik8hfxp7" path="res://shop.tscn" id="14_7y0pr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvfqb"]
+radius = 21.0238
+
+[sub_resource type="TileSet" id="TileSet_nqdmu"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+
+[sub_resource type="Gradient" id="Gradient_ait8p"]
+offsets = PackedFloat32Array(0.0909091, 0.993506)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r6kvg"]
+gradient = SubResource("Gradient_ait8p")
+fill = 1
+fill_from = Vector2(0.509174, 0.5)
+fill_to = Vector2(0.715596, 0)
+
+[node name="MainGameScreen" type="Node2D" groups=["World Scenes"]]
+y_sort_enabled = true
+script = ExtResource("1_jn4ry")
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="Environment"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+z_index = -1
+position = Vector2(651, 294)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_fj0j1")
+
+[node name="NightSky" type="Node2D" parent="Environment/BG"]
+z_index = -1
+position = Vector2(-1009.23, -480)
+scale = Vector2(1.53846, 1.53846)
+
+[node name="Sky" type="Sprite2D" parent="Environment/BG/NightSky"]
+position = Vector2(54, -81)
+rotation = -3.14159
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_fb6ry")
+
+[node name="ShadowParallex" type="Parallax2D" parent="Environment/BG/NightSky"]
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(-12, 0)
+
+[node name="Sky Shadows" type="Sprite2D" parent="Environment/BG/NightSky/ShadowParallex"]
+position = Vector2(-190, -127)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_77e03")
+
+[node name="StarParallex" type="Parallax2D" parent="Environment/BG/NightSky"]
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(20, 0)
+
+[node name="Stars" type="Sprite2D" parent="Environment/BG/NightSky/StarParallex"]
+modulate = Color(1, 1, 1, 0.443137)
+position = Vector2(56, -75)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_dhlxm")
+
+[node name="PlacementTool" parent="." instance=ExtResource("7_e5r81")]
+visible = false
+z_index = 1
+red = Color(1, 0.126, 0.088, 0.64)
+
+[node name="EnvironmentalObjects" type="Node2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("3_y8sjt")
+
+[node name="LoadSaveComponent" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_hil8r")
+
+[node name="ShopButton" type="Button" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Shop
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(640, 360)
+script = ExtResource("8_6faq4")
+
+[node name="UI Nodes" type="CanvasLayer" parent="."]
+
+[node name="PopUp" parent="UI Nodes" instance=ExtResource("4_rx0lc")]
+offset_bottom = 0.23999
+mouse_filter = 2
+
+[node name="PopUpContainer" parent="UI Nodes/PopUp" index="0"]
+mouse_filter = 2
+
+[node name="ButtonContainer" parent="UI Nodes/PopUp/PopUpContainer" index="1"]
+mouse_filter = 2
+
+[node name="WaterArea" type="Area2D" parent="."]
+position = Vector2(1228, 682)
+script = ExtResource("5_u0eul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
+position = Vector2(-3, 12)
+shape = SubResource("CircleShape2D_yvfqb")
+debug_color = Color(0.986972, 0.0764501, 0.208058, 0.42)
+
+[node name="World" type="TileMapLayer" parent="."]
+position = Vector2(6.10352e-05, 3.05176e-05)
+tile_set = SubResource("TileSet_nqdmu")
+
+[node name="HabitatButton" type="Button" parent="."]
+y_sort_enabled = true
+offset_left = 140.0
+offset_top = 11.0
+offset_right = 206.0
+offset_bottom = 42.0
+text = "Habitat"
+script = ExtResource("4_pyu41")
+metadata/_edit_use_anchors_ = true
+
+[node name="GrassPatches" parent="." instance=ExtResource("3_ps25t")]
+modulate = Color(0.8, 0.8, 0.8, 1)
+y_sort_enabled = true
+position = Vector2(606.2, 312.2)
+scale = Vector2(0.7, 0.7)
+tile_map_data = PackedByteArray("AAD//wgAAAABAAEAAAD+//n/AAAAAAAAAAD8/wAAAAAAAAAAAAD2/wcAAAABAAEAAADz/wgAAAABAAEAAADz/wYAAAABAAEAAADz/wQAAAABAAEAAADz/wMAAAABAAEAAADz/wIAAAABAAEAAADz/wEAAAABAAEAAADz/wAAAAABAAEAAADz////AAABAAEAAADz//3/AAABAAEAAAD6//v/AAABAAEAAAD7//z/AAABAAEAAAD6//3/AAABAAEAAAD7/wAAAAABAAEAAAACAPv/AAABAAEAAAACAPr/AAABAAEAAAACAPn/AAABAAEAAAACAPj/AAABAAEAAAACAPf/AAABAAEAAAADAPb/AAAAAAAAAAACAPX/AAABAAEAAAACAPT/AAABAAEAAAABAPP/AAABAAEAAAABAPT/AAABAAEAAAABAPX/AAABAAEAAAABAPb/AAABAAEAAAABAPf/AAABAAEAAAABAPj/AAABAAEAAAAAAPn/AAABAAEAAAACAP7/AAABAAEAAAACAP//AAABAAEAAAADAAAAAAABAAEAAAAFAAMAAAABAAEAAAAHAAMAAAAAAAAAAAAIAAQAAAAAAAEAAAAJAAQAAAAAAAAAAAABAO//AAAAAAAAAAACAPD/AAAAAAAAAAACAPH/AAAAAAEAAAAAAOz/AAAAAAAAAAAAAO3/AAAAAAAAAAABAO7/AAAAAAAAAAABAPH/AAAAAAAAAAACAPL/AAAAAAAAAAACAPP/AAAAAAAAAAADAPT/AAAAAAAAAAADAPX/AAAAAAAAAAADAPP/AAAAAAAAAAADAPL/AAAAAAAAAAADAPH/AAAAAAAAAAADAPD/AAAAAAAAAAADAO//AAAAAAAAAAAEAPD/AAAAAAAAAAAEAO//AAAAAAAAAAAFAPD/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAEAAAALAP3/AAAAAAEAAAALAP7/AAAAAAEAAAAKAP//AAAAAAEAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAP//AAAAAAAAAAAMAP7/AAAAAAEAAAAMAP3/AAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAADABQAAAAAAAAAAAAFAP7/AAAAAAEAAAAFAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAEAAAAHAAAAAAAAAAEAAAAFAPz/AAABAAEAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAEAAAAHAP7/AAAAAAEAAAAGAP//AAAAAAAAAAAGAP7/AAAAAAAAAAAGAPz/AAAAAAEAAAAEAPv/AAABAAEAAAALAP//AAAAAAEAAAAFAPv/AAAAAAAAAAAEAPz/AAABAAEAAAAEAP3/AAAAAAEAAAAEAP7/AAAAAAEAAAA=")
+
+[node name="Shop" parent="." instance=ExtResource("14_7y0pr")]
+position = Vector2(1048, 56)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.61339, 0.61339, 0.61339, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-332, -56.9999)
+scale = Vector2(37.9038, 28.8862)
+color = Color(0.0424638, 0.169464, 0.492363, 1)
+energy = 2.68
+texture = SubResource("GradientTexture2D_r6kvg")
+
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="button_down" from="UI Nodes/PopUp/PopUpContainer/ButtonContainer/Water/Button2" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="UI Nodes/PopUp/PopUpContainer/ButtonContainer/Water/Button2" to="." method="_on_button_button_up"]
+[connection signal="area_entered" from="WaterArea" to="WaterArea" method="_on_area_entered"]
+[connection signal="pressed" from="HabitatButton" to="." method="_on_plant_shop_button_pressed"]
+
+[editable path="UI Nodes/PopUp"]
+[editable path="UI Nodes/PopUp/PopUpContainer/ButtonContainer/Water"]

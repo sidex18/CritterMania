@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ud2838b58no"]
+
+[ext_resource type="Script" path="res://Base Objects (Parent Classes)/Scripts/Critters/Happiness Types/Twins.gd" id="1_ky8tl"]
+[ext_resource type="Texture2D" uid="uid://bg55kayedp1op" path="res://Water.png" id="1_tctin"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6e7w"]
+size = Vector2(36, 56)
+
+[node name="TwinTest" type="CharacterBody2D"]
+script = ExtResource("1_ky8tl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tctin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_i6e7w")

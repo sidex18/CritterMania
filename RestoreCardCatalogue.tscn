@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfggngu6482eb"]
+
+[sub_resource type="GDScript" id="GDScript_6k5i0"]
+script/source = "extends Node2D
+var savedCritterCards : SaveCritterCards
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if SaveCritterCards.saveCritterExists():
+		pass
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="RestoreCardCatalogue" type="Node2D"]
+script = SubResource("GDScript_6k5i0")

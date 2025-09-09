@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://dewjsdjle4or6"]
+
+[ext_resource type="Script" path="res://Game Screens/Scripts/CardCollectionScreen.gd" id="1_d24nm"]
+[ext_resource type="PackedScene" uid="uid://d0jdoscgbew02" path="res://Placable Objects/Critters/Cards/Scenes/CatCard.tscn" id="2_7d42r"]
+[ext_resource type="Texture2D" uid="uid://cp607ed85edi2" path="res://TrialBorder3.png" id="2_j2c0j"]
+
+[node name="CardCollectionScreen" type="Control"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_d24nm")
+
+[node name="BaseContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainStoreContainer" type="MarginContainer" parent="BaseContainer"]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 2
+theme_override_constants/margin_left = 85
+theme_override_constants/margin_top = 85
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BaseContainer/MainStoreContainer"]
+custom_minimum_size = Vector2(1100, 560)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ShopGrid" type="GridContainer" parent="BaseContainer/MainStoreContainer/ScrollContainer"]
+custom_minimum_size = Vector2(1100, 560)
+layout_mode = 2
+theme_override_constants/h_separation = 350
+columns = 3
+
+[node name="Column1" type="VBoxContainer" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="CatCard" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column1" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+button_mask = 0
+critter = "\"res://Placable Objects/Critters/Characters/Scenes/Cat.tscn\""
+
+[node name="CatCard2" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column1" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="CatCard3" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column1" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Column2" type="VBoxContainer" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="CatCard4" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column2" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="CatCard5" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column2" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="CatCard6" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column2" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Column3" type="VBoxContainer" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="CatCard7" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column3" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="CatCard8" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column3" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="CatCard9" parent="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column3" instance=ExtResource("2_7d42r")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Border" type="NinePatchRect" parent="BaseContainer"]
+custom_minimum_size = Vector2(1280, 730)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_j2c0j")
+patch_margin_left = 333
+patch_margin_top = 333
+patch_margin_right = 333
+patch_margin_bottom = 333
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 44.0
+
+[connection signal="buyingACritter" from="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column1/CatCard" to="." method="buyCritter"]
+[connection signal="buyingACritter" from="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column1/CatCard2" to="." method="buyCritter"]
+[connection signal="buyingACritter" from="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column1/CatCard3" to="." method="buyCritter"]
+[connection signal="buyingACritter" from="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column2/CatCard4" to="." method="buyCritter"]
+[connection signal="buyingACritter" from="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column2/CatCard5" to="." method="buyCritter"]
+[connection signal="buyingACritter" from="BaseContainer/MainStoreContainer/ScrollContainer/ShopGrid/Column2/CatCard6" to="." method="buyCritter"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

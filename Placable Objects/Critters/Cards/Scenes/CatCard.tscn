@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0jdoscgbew02"]
+
+[ext_resource type="Texture2D" uid="uid://bl14qw6cxon1n" path="res://icon.svg" id="1_fjx6u"]
+[ext_resource type="Script" path="res://Placable Objects/Critters/Cards/Scripts/CatCard.gd" id="3_xtndc"]
+
+[node name="CatCard" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -454.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_fjx6u")
+script = ExtResource("3_xtndc")
+critter = "res://Placable Objects/Critters/Characters/Scenes/Cat.tscn"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

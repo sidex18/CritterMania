@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://ng78pamvqmgi"]
+
+[ext_resource type="Script" path="res://Placable Objects/Plants/Scripts/RosePlant.gd" id="2_4ab0f"]
+[ext_resource type="Shader" path="res://Placable Objects/Plants/Scenes/GenericShadowShader.gdshader" id="2_qihge"]
+[ext_resource type="Texture2D" uid="uid://b8dnhknf4h6eo" path="res://Assets/Art/Placable Objects/Plants/Flowers/Orange flower with ground.png" id="2_vmdus"]
+[ext_resource type="Texture2D" uid="uid://ck70u3qdomotq" path="res://Assets/Art/Placable Objects/Plants/Flowers/dry flower with ground.png" id="3_c8636"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_aiwsk"]
+polygon = PackedVector2Array(-2, 17, 67, -17, 67, -12, -1, 22, -70, -13, -70, -17)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adrj8"]
+shader = ExtResource("2_qihge")
+shader_parameter/drop_shadow_color = Color(0, 0, 0, 0.5)
+shader_parameter/shadow_offset = Vector2(-0.005, 0.02)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s8jec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vmdus")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c8636")
+}],
+"loop": true,
+"name": &"dry ",
+"speed": 5.0
+}]
+
+[node name="RosePlant" type="Area2D" groups=["Plants", "Savable Objects"]]
+z_as_relative = false
+script = ExtResource("2_4ab0f")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2(-1, 17)
+occluder = SubResource("OccluderPolygon2D_aiwsk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_adrj8")
+position = Vector2(7, -3)
+scale = Vector2(0.137, 0.137)
+sprite_frames = SubResource("SpriteFrames_s8jec")
+animation = &"dry "
+
+[node name="PlantArea" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(11, 8)
+polygon = PackedVector2Array(-20, -43, 53, -7, -21, 30, -94, -6)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-9.53674e-07, 3)
+polygon = PackedVector2Array(-4, 23, 57, -4, -4, -31, -61, -3)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

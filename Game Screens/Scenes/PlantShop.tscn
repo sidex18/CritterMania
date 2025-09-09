@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgs4y35f16dxq"]
+
+[ext_resource type="Script" path="res://Game Screens/Scripts/PlantShop.gd" id="1_m7kw3"]
+
+[node name="PlantShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m7kw3")
+
+[node name="PlantButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Plant
+"
+
+[node name="HabitatButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 2.0
+offset_right = 190.0
+offset_bottom = 33.0
+text = "Habitat
+"
+
+[connection signal="pressed" from="PlantButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HabitatButton" to="." method="_on_habitat_button_pressed"]

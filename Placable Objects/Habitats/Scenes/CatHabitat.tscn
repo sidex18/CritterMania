@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://2crftisccqi8"]
+
+[ext_resource type="PackedScene" uid="uid://dx713j6fgpf0f" path="res://Base Objects (Parent Classes)/Scenes/BaseHabitat.tscn" id="1_kurdu"]
+[ext_resource type="Script" path="res://Placable Objects/Habitats/Scenes/CatHabitat.gd" id="2_7av3b"]
+[ext_resource type="Script" path="res://Resources/Regular/CritterData.gd" id="3_6li02"]
+[ext_resource type="Script" path="res://Resources/Regular/HabitatData.gd" id="3_mp74b"]
+[ext_resource type="Texture2D" uid="uid://be8411txvg38b" path="res://Furnitures.png" id="3_phojh"]
+
+[sub_resource type="Resource" id="Resource_h3quy"]
+script = ExtResource("3_mp74b")
+habitatCritters = Array[ExtResource("3_6li02")]([])
+level = 1
+scenePath = ""
+position = Vector2(0, 0)
+positionalMarker1 = true
+positionalMarker2 = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0spx4"]
+atlas = ExtResource("3_phojh")
+region = Rect2(192, 132, 128, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmt5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0spx4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CatHabitat" instance=ExtResource("1_kurdu")]
+script = ExtResource("2_7av3b")
+dataToSave = SubResource("Resource_h3quy")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+modulate = Color(0.75, 0.75, 0.75, 1)
+sprite_frames = SubResource("SpriteFrames_tmt5j")
+animation = &"default"
+
+[node name="Marker1" parent="PositionMarkers" index="0"]
+position = Vector2(-42, -9)
+
+[node name="Marker2" parent="PositionMarkers" index="1"]
+position = Vector2(47, -9)
+
+[connection signal="pressed" from="CrittersButton" to="." method="_on_critters_button_pressed"]

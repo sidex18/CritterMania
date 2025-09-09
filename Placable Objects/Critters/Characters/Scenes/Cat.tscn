@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://n6l0wvkuk8xj"]
+
+[ext_resource type="Script" path="res://Placable Objects/Critters/Characters/Scripts/Cat.gd" id="1_6tthv"]
+[ext_resource type="Texture2D" uid="uid://f2rlpt87mhld" path="res://Box3.png" id="2_a2a37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b6om"]
+size = Vector2(27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guv6b"]
+atlas = ExtResource("2_a2a37")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udfx6"]
+atlas = ExtResource("2_a2a37")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e88ip"]
+atlas = ExtResource("2_a2a37")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psndn"]
+atlas = ExtResource("2_a2a37")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7kf7m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guv6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udfx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e88ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psndn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cat" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite") groups=["Savable Objects"]]
+modulate = Color(0.75, 0.75, 0.75, 1)
+z_index = 3
+script = ExtResource("1_6tthv")
+animatedSprite = NodePath("CatSprite")
+critterTrait = "Twins"
+decayRate = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_5b6om")
+
+[node name="CatSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7kf7m")
+frame_progress = 0.0176544

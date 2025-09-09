@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://do02p5rt26qu"]
+
+[ext_resource type="Script" path="res://Game Screens/Utility Tools/Scripts/PlacementTool.gd" id="1_o3ebp"]
+[ext_resource type="Texture2D" uid="uid://dwg6ssmqrwfjq" path="res://Assets/Art/Additional Utilities/Green Selection.png" id="2_y8gjk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xphdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y8gjk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlacementTool" type="Area2D"]
+modulate = Color(1, 1, 1, 0.647059)
+script = ExtResource("1_o3ebp")
+red = Color(0.999653, 0.125964, 0.0876251, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -3)
+scale = Vector2(0.137, 0.137)
+sprite_frames = SubResource("SpriteFrames_xphdd")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-3, -0.999999)
+scale = Vector2(0.695313, 0.713068)
+polygon = PackedVector2Array(-44.5843, 2.80478, 2.8764, -18.2311, 47.4607, 2.80478, 2.87641, 23.8406)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

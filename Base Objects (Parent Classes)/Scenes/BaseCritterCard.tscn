@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdfqf6p7vy0d2"]
+
+[ext_resource type="Texture2D" uid="uid://bl14qw6cxon1n" path="res://icon.svg" id="1_7oapf"]
+[ext_resource type="Script" path="res://Base Objects (Parent Classes)/Scripts/BaseCritterCard.gd" id="2_5dfg7"]
+
+[node name="BaseCritterCard" type="TextureButton"]
+anchors_preset = -1
+anchor_right = 0.111
+anchor_bottom = 0.198
+offset_right = 0.127991
+offset_bottom = -0.304016
+texture_normal = ExtResource("1_7oapf")
+script = ExtResource("2_5dfg7")

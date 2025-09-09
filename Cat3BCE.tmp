@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://n6l0wvkuk8xj"]
+
+[ext_resource type="Script" path="res://Cat.gd" id="1_6tthv"]
+[ext_resource type="PackedScene" uid="uid://d0jdoscgbew02" path="res://CatCard.tscn" id="2_l1m8a"]
+
+[node name="Cat" type="CharacterBody2D"]
+script = ExtResource("1_6tthv")
+
+[node name="CatCard" parent="." instance=ExtResource("2_l1m8a")]

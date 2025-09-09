@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1s0dvicugdn2"]
+
+[ext_resource type="Script" path="res://Base Objects (Parent Classes)/Scripts/Critters/BaseCritter.gd" id="1_7cecw"]
+
+[node name="BaseCritter" type="Node2D" groups=["Savable Objects"]]
+z_index = -1
+script = ExtResource("1_7cecw")
