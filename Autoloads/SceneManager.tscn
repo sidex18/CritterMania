@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxuq8qqah5tvv"]
+
+[ext_resource type="Script" path="res://Autoloads/SceneManager.gd" id="1_ysusk"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_ysusk")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Scene" type="Node2D" parent="."]

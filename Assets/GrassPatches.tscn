@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=4 uid="uid://psl5qgwkc2c8"]
+
+[ext_resource type="Texture2D" uid="uid://vvqskyhxr7wk" path="res://Assets/Art/Tilesets/Creepwood Grass Patches.png" id="1_4d7ld"]
+[ext_resource type="Shader" path="res://Shaders/GrassPatches.gdshader" id="1_ti6x5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1yx1"]
+shader = ExtResource("1_ti6x5")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wedg"]
+texture = ExtResource("1_4d7ld")
+texture_region_size = Vector2i(276, 138)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 15)
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qfgj0"]
+tile_shape = 1
+tile_size = Vector2i(143, 71)
+sources/0 = SubResource("TileSetAtlasSource_7wedg")
+
+[node name="GrassPatches" type="TileMapLayer"]
+z_index = -1
+material = SubResource("ShaderMaterial_w1yx1")
+position = Vector2(-64, 26)
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAEAAAABAAIAAAAAAAEAAAABAAMAAAAAAAEAAAACAAIAAAAAAAEAAAACAAQAAAABAAEAAAACAAMAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_qfgj0")
